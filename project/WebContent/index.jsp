@@ -71,8 +71,8 @@
                                         <option value="10">10</option>
                                     </select>
                                 </p>
-                                위도 <input id="lat" name="lat" type="text" ><br>
-                                경도 <input id="lng" name="lng" type="text" >
+                                <input id="lat" name="lat" type="hidden" ><br>
+                                <input id="lng" name="lng" type="hidden" >
                         </td>
                         <td valign="top" style="width: 375px;">
                             <p style="font-size: 25px;">Desc:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
