@@ -159,11 +159,11 @@
                             }
                         </script>
                     </div>
-                    </div>
-                </div>
-                <%	} // for
+                    <%	} // for
                 } //if
                 %>
+                    </div>
+                </div>
                     <a href="" class="item1" > <div style="width: 500px; height: 100px;background-color: darkgray;
                 position: relative; display: block; margin: 6%; bottom: auto;"></div></a>
                     </div>
