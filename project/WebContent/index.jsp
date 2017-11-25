@@ -50,15 +50,15 @@
                 <table>
                     <tr >
                         <td style="width: 375px; padding: 18px">
-                                <p style="font-size: 25px; margin: 10px; padding: 8px">Name:&nbsp;
+                                <p style="font-size: 25px; margin: 0px; padding: 8px">Name:&nbsp;
                                     <input type="text" name="itemName" value="Name" style="height: 25px;"></p>
 
-                                <p style="font-size: 25px; margin: 10px; padding: 8px">Url:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <input type="file" name="imageUrl" value="file" style="height: 25px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <p style="font-size: 25px; margin: 0px; padding: 8px">Url:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <input type="file" name="imageUrl" value="file" style="height: 25px;">
                                     <input type="file" name="shadowUrl" value="file" style="height: 25px;"></p>
 
                                 <p style="font-size: 25px; margin: 10px; padding: 8px">Cnt:&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <select name="itemCnt" style="height: 25px;">
+                                    <select name="itemCnt" style="height: 20px;">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
