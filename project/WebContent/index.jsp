@@ -66,7 +66,7 @@
                                 경도 <input id="lng" name="lng" type="text" >
                         </td>
                         <td valign="top" style="width: 375px;">
-                            <p style="font-size: 25px;">Desc:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <p style="font-size: 25px;">Desc:  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <textarea name="itemDesc" cols="40" rows="8" ></textarea></p>
                             <input type="submit" value="확인" style="width: 260px; padding: 8px">
                         </td>
