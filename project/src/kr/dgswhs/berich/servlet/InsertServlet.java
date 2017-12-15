@@ -75,7 +75,7 @@ public class InsertServlet extends HttpServlet {
 		        i++;
 		    }
 		    
-		    String baseUrl = "http://localhost:8080/"+context.getContextPath()+"/upload/";
+		    String baseUrl = "http://localhost:8080"+context.getContextPath()+"/upload/";
 		    String itemName = multi.getParameter("itemName");
 		    String imageUrl = baseUrl+fileName[0];
 		    String shadowUrl = baseUrl + fileName[1];

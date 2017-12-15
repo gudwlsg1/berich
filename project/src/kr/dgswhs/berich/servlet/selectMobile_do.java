@@ -18,7 +18,7 @@ import kr.dgswhs.berich.bean.DataBean;
 /**
  * Servlet implementation class insert
  */
-@WebServlet("/insert")
+@WebServlet("/select")
 public class selectMobile_do extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -50,7 +50,7 @@ public class selectMobile_do extends HttpServlet {
 
 	protected void select(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		response.setCharacterEncoding("euc-kr");
 		DBBean dbbean = DBBean.getInstance();
 		ArrayList<DataBean> data = dbbean.select(-1);
 
@@ -77,6 +77,5 @@ public class selectMobile_do extends HttpServlet {
 			jsonObject.put("item", resultArray);
 		String jsonInfo = jsonObject.toString();
 		response.getWriter().print(jsonInfo);
-
 	}
 }
