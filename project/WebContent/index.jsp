@@ -61,19 +61,21 @@
             </script>
 
             <div id="info" style="background-color: gray; width: 700px; margin: 30px;">                        <!--왼쪽 아래 화면 폼-->
+                <form action="Insert"name="form" method='post' enctype="multipart/form-data" class="form-inline" style="padding:10px;">
                 <table>
                     <tr>
+                        
                         <h2 style="padding: 20px;  ">Make treasure</h2>
                         <td style="width: 375px; padding: 10px;">
 
-                                <form class="form-inline" style="padding:10px;">
+                               
                                     <div class="form-group">
                                         <label for="name">Name:</label>
-                                        <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
+                                        <input type="text" class="form-control" id="name" placeholder="Enter name" name="itemName">
                                     </div>
                                     <div class="form-group" style="margin: 20px 0px">
                                         <label for="count">Count:</label>
-                                        <select class="form-control" id="count">
+                                        <select class="form-control" id="count" name="itemCnt">
                                         <option>1</option>
                                         <option>2</option>
                                         <option>3</option>
@@ -86,45 +88,43 @@
                                         <option>10</option>
                                         </select>
                                     </div>
-                                    <form method="POST" action="#" enctype="multipart/form-data">
+                                     <!--  file upload  -->
+                                    <div class="input-group">
                                         <div class="input-group">
-                                            <div class="input-group">
-                                                <label>Image File:</label>
-                                            </div>
-                                            <div class="input-group">
-                                                <input type="text" id="filename" class="form-control" readonly required aria-label="Selected file name">
-                                                <span class="input-group-btn">
-                                                    <button class="btn btn-secondary" type="button" id="browsebutton">Browse</button>
-                                                </span>
-                                            </div>
-                                            <input class="form-control file" type="file" id="fileinput" name="imageUrl" required aria-label="Hidden input for file selection">
+                                            <label>Image File:</label>
                                         </div>
                                         <div class="input-group">
-                                            <div class="input-group">
-                                                <label>Shadow Image File:</label>
-                                            </div>
-                                            <div class="input-group">
-                                                <input type="text" id="filename2" class="form-control" readonly required aria-label="Selected file name">
-                                                <span class="input-group-btn">
-                                                    <button class="btn btn-secondary" type="button" id="browsebutton2">Browse</button>
-                                                </span>
-                                            </div>
-                                            <input class="form-control file" type="file" id="fileinput2" name="shadowUrl" required aria-label="Hidden input for file selection">
+                                            <input type="text" id="filename" class="form-control" readonly required aria-label="Selected file name">
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-secondary" type="button" id="browsebutton">Browse</button>
+                                            </span>
                                         </div>
-                                    </form>
+                                        <input class="form-control file" type="file" id="fileinput" name="imageUrl" required aria-label="Hidden input for file selection">
+                                    </div>
+                                    <div class="input-group">
+                                        <div class="input-group">
+                                            <label>Shadow Image File:</label>
+                                        </div>
+                                        <div class="input-group">
+                                            <input type="text" id="filename2" class="form-control" readonly required aria-label="Selected file name">
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-secondary" type="button" id="browsebutton2">Browse</button>
+                                            </span>
+                                        </div>
+                                        <input class="form-control file" type="file" id="fileinput2" name="shadowUrl" required aria-label="Hidden input for file selection">
+                                    </div>
+                                    <!--  hidden, lat and lng -->
+                                    <input id="lat" name="lat" type="text" style="border-radius: 30px;"><br>
+                              		<input id="lng" name="lng" type="text"  style="border-radius: 30px;">
                                     <button type="submit" class="btn btn-default" style="margin: 10px">Submit</button>
-                                </form>
-
-                                <input id="lat" name="lat" type="hidden" style="border-radius: 30px;"><br>
-                                <input id="lng" name="lng" type="hidden"  style="border-radius: 30px;">
-
                         </td>
                         <td valign="top" style="width: 300px; padding: 8px">
                             <label>Info:</label>
-                                <textarea rows="6" cols="8" class="form-control"></textarea>
+                                <textarea rows="6" cols="8" class="form-control" name="itemDesc"></textarea>
                         </td>
                     </tr>
                 </table>
+                </form>
             </div>
 
         </td>

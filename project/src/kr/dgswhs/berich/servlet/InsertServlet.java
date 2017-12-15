@@ -70,6 +70,7 @@ public class InsertServlet extends HttpServlet {
 		    {
 		        String file = files.nextElement();
 		        fileName[i] = multi.getFilesystemName(file);
+		        System.out.println(fileName[i]);
 		        String orgName = multi.getOriginalFileName(file);
 		        i++;
 		    }
