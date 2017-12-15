@@ -28,6 +28,16 @@
 </head>
 
 <body>
+<%
+	String message = request.getParameter("message");
+	if(message != null){
+		if(message.equals("s"))
+			out.println("저장 완료");
+		else
+			out.println("저장 실패");
+	}
+	ArrayList<DataBean> list = DBBean.getInstance().select(-1);
+%>
 <table>
     <tbody>
     <tr>
@@ -70,8 +80,8 @@
                                         <option value="10">10</option>
                                     </select>
                                 </p>
-                                위도 <input id="lat" name="lat" type="text" style="border-radius: 30px;"><br>
-                                경도 <input id="lng" name="lng" type="text"  style="border-radius: 30px;">
+                                <input id="lat" name="lat" type="hidden" style="border-radius: 30px;"><br>
+                                <input id="lng" name="lng" type="hidden"  style="border-radius: 30px;">
                             </form>
                         </td>
                         <td valign="top" style="width: 375px;">
@@ -87,6 +97,10 @@
         <td valign="top">                                                                                                   <!--오른쪽 화면 리스트-->
             <div  id="box" style="width: 700px; height: 745px; background-color: gray; margin-right: 30px">
                 <div style="overflow-y:scroll; height: 100%; margin: 20px;">
+                <% if(list != null) {
+                	for(int i=0; i < list.size(); i++){
+                		DataBean b = list.get(i);
+                %>
                     <div style="width: 500px; height: 580px;background-color: darkgray; margin: 6%;">
                         <div style="padding: 3px;"></div>
                             <div id="map2" style="width: 400px;height: 300px ; margin:7%"></div>
@@ -157,7 +171,9 @@
                     </div>
                     </div>
                 </div>
-
+				<%	} // for
+                } //if
+                %>
             </div>
         </td>
     </tr>
@@ -194,9 +210,7 @@
         resultDiv.innerHTML = message;
     });
 
-    <a class="btn btn-primary" >link with bootstrap</a>
-
-    <a >link without bootstrap</a>
+    <a class="btn btn-primary" >
 </script>
 </body>
 </html>
