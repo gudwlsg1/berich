@@ -7,28 +7,27 @@
 <html lang="ko">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
     <title></title>
     <style type="text/css">
-        .item1:active{
-            width: 500px;
-            height: 300px;
-            background-color: darkgray;
-        }
+        .wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
+        .wrap * {padding: 0;margin: 0;}
+        .wrap .info {width: 286px;height: 120px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
+        .wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
+        .info .title {padding: 5px 0 0 10px;height: 30px;background: #eee;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
+        .info .close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
+        .info .close:hover {cursor: pointer;}
+        .info .body {position: relative;overflow: hidden;}
+        .info .desc {position: relative;margin: 13px 0 0 90px;height: 75px;}
+        .desc .ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+        .desc .jibun {font-size: 11px;color: #888;margin-top: -2px;}
+        .info .img {position: absolute;top: 6px;left: 5px;width: 73px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;}
+        .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
+        .info .link {color: #5085BB;}
     </style>
 </head>
 
 <body>
-<%
-	String message = request.getParameter("message");
-	if(message != null){
-		if(message.equals("s"))
-			out.println("저장 완료");
-		else
-			out.println("저장 실패");
-	}
-	
-	ArrayList<DataBean> list = DBBean.getInstance().select(-1);
-%>
 <table>
     <tbody>
     <tr>
@@ -44,21 +43,21 @@
                 };
                 var map = new daum.maps.Map(container, options);
             </script>
- 
+
             <div id="info" style="background-color: gray; width: 700px; margin: 30px;">                        <!--왼쪽 아래 화면 폼-->
-            <form action="Insert"name="form" method='post' enctype="multipart/form-data">
                 <table>
                     <tr >
-                        <td style="width: 375px; padding: 18px">
+                        <td style="width: 375px; padding: 10px">
+                            <form action=".php"name="form">
                                 <p style="font-size: 25px; margin: 0px; padding: 8px">Name:&nbsp;
-                                    <input type="text" name="itemName" value="Name" style="height: 25px;"></p>
+                                    <input type="text" name="name" value="Name" style="height: 25px;border-radius: 30px;"></p>
 
                                 <p style="font-size: 25px; margin: 0px; padding: 8px">Url:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <input type="file" name="imageUrl" value="file" style="height: 25px;">
-                                    <input type="file" name="shadowUrl" value="file" style="height: 25px;"></p>
+                                    <input type="file" name="url" value="file" style="height: 25px;">
+                                    <input type="file" name="url" value="file" style="height: 25px;"></p>
 
-                                <p style="font-size: 25px; margin: 10px; padding: 8px">Cnt:&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <select name="itemCnt" style="height: 20px;">
+                                <p style="border-radius: 30px; font-size: 25px; margin: 5px; padding: 8px">Cnt:&nbsp;&nbsp;
+                                    <select style="width: 80px; height: 20px; ">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -71,32 +70,29 @@
                                         <option value="10">10</option>
                                     </select>
                                 </p>
-                                <input id="lat" name="lat" type="hidden" ><br>
-                                <input id="lng" name="lng" type="hidden" >
+                                위도 <input id="lat" name="lat" type="text" style="border-radius: 30px;"><br>
+                                경도 <input id="lng" name="lng" type="text"  style="border-radius: 30px;">
+                            </form>
                         </td>
                         <td valign="top" style="width: 375px;">
                             <p style="font-size: 25px;">Desc:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <textarea name="itemDesc" cols="40" rows="8" ></textarea></p>
-                            <input type="submit" value="확인" style="width: 260px; padding: 8px">
+                                <textarea name="content" cols="40" rows="8" ></textarea></p>
+                            <input type="submit" value="확인" style="border-radius: 30px; width: 274px; padding: 8px">
                         </td>
                     </tr>
                 </table>
-                </form>
             </div>
+
         </td>
         <td valign="top">                                                                                                   <!--오른쪽 화면 리스트-->
-            <div  id="box" style="width: 700px; height: 800px; background-color: gray; margin-right: 30px">
+            <div  id="box" style="width: 700px; height: 745px; background-color: gray; margin-right: 30px">
                 <div style="overflow-y:scroll; height: 100%; margin: 20px;">
-                <% if(list != null) {
-                	for(int i=0; i < list.size(); i++){
-                		DataBean b = list.get(i);
-                %>
-                 <div style="width: 500px; height: 580px;background-color: darkgray; margin: 6%;">
+                    <div style="width: 500px; height: 580px;background-color: darkgray; margin: 6%;">
                         <div style="padding: 3px;"></div>
                             <div id="map2" style="width: 400px;height: 300px ; margin:7%"></div>
 
-                            <textarea name="content" cols="66" rows="7"  style="margin:18px" value = '<%=b.getItemName()%>' readonly></textarea>
-                        <p style="font-size: 15px; margin: 3%">Name:<%=b.getItemName()%><input type="text" style="width: 100px;">
+                            <textarea name="content" cols="66" rows="7"  style="margin:18px"></textarea>
+                        <p style="font-size: 15px; margin: 3%">Name:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" style="width: 100px; border-radius: 20%">
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit"  value="삭제하기 "></p>
 
 
@@ -115,7 +111,7 @@
                             // 지도에 마커를 표시합니다
                             var marker = new daum.maps.Marker({
                                 map: map,
-                                position: new daum.maps.LatLng(<%=b.getLat()%>, <%=b.getLng()%>)
+                                position: new daum.maps.LatLng(33.450701, 126.570667)
                             });
 
                             // 커스텀 오버레이에 표시할 컨텐츠 입니다
@@ -159,13 +155,6 @@
                             }
                         </script>
                     </div>
-                    <%	} // for
-                } //if
-                %>
-                    </div>
-                </div>
-                    <a href="" class="item1" > <div style="width: 500px; height: 100px;background-color: darkgray;
-                position: relative; display: block; margin: 6%; bottom: auto;"></div></a>
                     </div>
                 </div>
 
@@ -174,7 +163,6 @@
     </tr>
     </tbody>
 </table>
-
 
 
 <div id="map" style="height:50px;"></div>
@@ -200,13 +188,15 @@
         marker.setPosition(latlng);
         document.getElementById('lat').value=latlng.getLat();
         document.getElementById('lng').value=latlng.getLng();
-        //var message = '클릭한 위치의 위도는 ' + latlng.getLat() + ' 이고, ';
-        //message += '경도는 ' + latlng.getLng() + ' 입니다';
+        var message = '클릭한 위치의 위도는 ' + latlng.getLat() + ' 이고, ';
+        message += '경도는 ' + latlng.getLng() + ' 입니다';
         var resultDiv = document.getElementById('clickLatlng');
         resultDiv.innerHTML = message;
     });
 
-    //리스트 클릭하면 정보창뜨게하기
+    <a class="btn btn-primary" >link with bootstrap</a>
+
+    <a >link without bootstrap</a>
 </script>
 </body>
 </html>
