@@ -1,3 +1,4 @@
+<%@page import="javafx.scene.control.Alert"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList" %>
@@ -34,216 +35,32 @@
 </head>
 
 <body>
-<%
-	String message = request.getParameter("message");
-	if(message != null){
-		if(message.equals("s"))
-			out.println("저장 완료");
-		else
-			out.println("저장 실패");
-	}
-	ArrayList<DataBean> list = DBBean.getInstance().select(-1);
-%>
+<a href="hide.jsp"> 보물 추가하기</a><br>
 <table>
     <tbody>
     <tr>
         <td valign="top">
-            <div id="map" style="width:700px;height:400px; margin: 30px;"></div>                                          <!--지도화면-->
-            <script type="text/javascript"
-                    src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c59727be163045e7f3830a65c8a89d9e"></script>
-            <script>
-                var container = document.getElementById('map');
-                var options = {
-                    center: new daum.maps.LatLng(33.450701, 126.570667),
-                    level: 3
-                };
-                var map = new daum.maps.Map(container, options);
-            </script>
-
-            <div id="info" style="background-color: gray; width: 700px; margin: 30px;">                        <!--왼쪽 아래 화면 폼-->
-                <form action="Insert"name="form" method='post' enctype="multipart/form-data" class="form-inline" style="padding:10px;">
-                <table>
-                    <tr>
-                        
-                        <h2 style="padding: 20px;  ">Make treasure</h2>
-                        <td style="width: 375px; padding: 10px;">
-
-                               
-                                    <div class="form-group">
-                                        <label for="name">Name:</label>
-                                        <input type="text" class="form-control" id="name" placeholder="Enter name" name="itemName">
-                                    </div>
-                                    <div class="form-group" style="margin: 20px 0px">
-                                        <label for="count">Count:</label>
-                                        <select class="form-control" id="count" name="itemCnt">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                        <option>6</option>
-                                        <option>7</option>
-                                        <option>8</option>
-                                        <option>9</option>
-                                        <option>10</option>
-                                        </select>
-                                    </div>
-                                     <!--  file upload  -->
-                                    <div class="input-group">
-                                        <div class="input-group">
-                                            <label>Image File:</label>
-                                        </div>
-                                        <div class="input-group">
-                                            <input type="text" id="filename" class="form-control" readonly required aria-label="Selected file name">
-                                            <span class="input-group-btn">
-                                                <button class="btn btn-secondary" type="button" id="browsebutton">Browse</button>
-                                            </span>
-                                        </div>
-                                        <input class="form-control file" type="file" id="fileinput" name="imageUrl" required aria-label="Hidden input for file selection">
-                                    </div>
-                                    <div class="input-group">
-                                        <div class="input-group">
-                                            <label>Shadow Image File:</label>
-                                        </div>
-                                        <div class="input-group">
-                                            <input type="text" id="filename2" class="form-control" readonly required aria-label="Selected file name">
-                                            <span class="input-group-btn">
-                                                <button class="btn btn-secondary" type="button" id="browsebutton2">Browse</button>
-                                            </span>
-                                        </div>
-                                        <input class="form-control file" type="file" id="fileinput2" name="shadowUrl" required aria-label="Hidden input for file selection">
-                                    </div>
-                                    <!--  hidden, lat and lng -->
-                                    <input id="lat" name="lat" type="text" style="border-radius: 30px;"><br>
-                              		<input id="lng" name="lng" type="text"  style="border-radius: 30px;">
-                                    <button type="submit" class="btn btn-default" style="margin: 10px">Submit</button>
-                        </td>
-                        <td valign="top" style="width: 300px; padding: 8px">
-                            <label>Info:</label>
-                                <textarea rows="6" cols="8" class="form-control" name="itemDesc"></textarea>
-                        </td>
-                    </tr>
-                </table>
-                </form>
-            </div>
-
-        </td>
-        <td valign="top">                                                                                                   <!--오른쪽 화면 리스트-->
-            <div  id="box" style="width: 700px; height: 745px; background-color: gray; margin-right: 30px">
-                <div style="overflow-y:scroll; height: 100%; margin: 20px;">
-				<% if(list != null) {
+		<% 
+				ArrayList<DataBean> list = DBBean.getInstance().select(-1);
+				if(list != null) {
                 	for(int i=0; i < list.size(); i++){
                 		DataBean b = list.get(i);
                 		String itemName = b.getItemName();
                 		String imageUrl = b.getImageUrl();
                 		String itemDesc = b.getItemDesc();
-                		out.println(itemDesc);
                 %>
-                    <div style="width: 500px; height: 580px;background-color: darkgray; margin: 6%;">
-                        <div style="padding: 3px;"></div>
-                            <div id="map2" style="width: 400px;height: 300px ; margin:7%"></div>
-
-                        <textarea class="form-control" rows="5" cols="5" value = "<%=itemDesc%>" readonly></textarea>
+            <!--  name -->
                         <div class="form-group">
-                        <label for="name">Name:</label>
-                        <input type="text" class="form-control" id="name" placeholder="Enter name" name="name" style="width: 180px" value = '<%=itemName%>'>
-                    </div>
-
-
-
-                        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c59727be163045e7f3830a65c8a89d9e"></script>
-                        <script>
-                            var mapContainer = document.getElementById('map2'), // 지도의 중심좌표
-                                mapOption = {
-                                    center: new daum.maps.LatLng(33.451475, 126.570528), // 지도의 중심좌표
-                                    draggable : false,
-                                    level: 3 // 지도의 확대 레벨
-                                };
-
-                            var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-
-                            // 지도에 마커를 표시합니다
-                            var marker = new daum.maps.Marker({
-                                map: map,
-                                position: new daum.maps.LatLng(33.450701, 126.570667)
-                            });
-
-                            // 커스텀 오버레이에 표시할 컨텐츠 입니다
-                            // 커스텀 오버레이는 아래와 같이 사용자가 자유롭게 컨텐츠를 구성하고 이벤트를 제어할 수 있기 때문에
-                            // 별도의 이벤트 메소드를 제공하지 않습니다
-                            var content = '<div class="wrap">' +
-                                '    <div class="info">' +
-                                '        <div class="title">' +
-                                '	<%=itemName%>' +
-                                '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' +
-                                '        </div>' +
-                                '        <div class="body">' +
-                                '            <div class="img">' +
-                                '                <img src= "<%=imageUrl%>" width="73" height="70">' +
-                                '           </div>'+
-                                '        </div>' +
-                                '    </div>' +
-                                '</div>';
-
-                            // 마커 위에 커스텀오버레이를 표시합니다
-                            // 마커를 중심으로 커스텀 오버레이를 표시하기위해 CSS를 이용해 위치를 설정했습니다
-                            var overlay = new daum.maps.CustomOverlay({
-                                content: content,
-                                map: map,
-                                position: marker.getPosition()
-                            });
-
-                            // 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
-                            daum.maps.event.addListener(marker, 'click', function() {
-                                overlay.setMap(map);
-                            });
-
-                            // 커스텀 오버레이를 닫기 위해 호출되는 함수입니다
-                            function closeOverlay() {
-                                overlay.setMap(null);
-                            }
-                        </script>
-                    	</div>
+                            <label for="name"><a href="info.jsp?itemId=<%=b.getItemId() %>">Name</a></label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter name" name="name" style="width: 180px" value = '<%=itemName%>'>
+                        </div>
+                        
                     	<%	} // for
                 } //if
                 %>
-                    	</div>
-                	</div>
-            	</div>
         	</td>
     	</tr>
     </tbody>
 </table>
-
-
-<div id="map" style="height:50px;"></div>
-<div id="clickLatlng"></div>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c59727be163045e7f3830a65c8a89d9e"></script>
-<script>
-    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
-        mapOption = {
-            center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-            level: 3 // 지도의 확대 레벨
-        };
-    var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-    // 지도를 클릭한 위치에 표출할 마커입니다
-    var marker = new daum.maps.Marker({
-        position: map.getCenter()
-    });
-    marker.setMap(map);
-    // 지도에 클릭 이벤트를 등록합니다
-    daum.maps.event.addListener(map, 'click', function(mouseEvent) {
-// 클릭한 위도, 경도 정보를 가져옵니다
-        var latlng = mouseEvent.latLng;
-// 마커 위치를 클릭한 위치로 옮깁니다
-        marker.setPosition(latlng);
-        document.getElementById('lat').value=latlng.getLat();
-        document.getElementById('lng').value=latlng.getLng();
-        var message = '클릭한 위치의 위도는 ' + latlng.getLat() + ' 이고, ';
-        message += '경도는 ' + latlng.getLng() + ' 입니다';
-        var resultDiv = document.getElementById('clickLatlng');
-        resultDiv.innerHTML = message;
-    });
-</script>
 </body>
 </html>
