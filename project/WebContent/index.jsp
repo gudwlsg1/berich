@@ -102,13 +102,14 @@
                 		DataBean b = list.get(i);
                 		String itemName = b.getItemName();
                 		String imageUrl = b.getImageUrl();
+                		String itemDesc = b.getItemDesc();
                 %>
                     <div style="width: 500px; height: 580px;background-color: darkgray; margin: 6%;">
                         <div style="padding: 3px;"></div>
                             <div id="map2" style="width: 400px;height: 300px ; margin:7%"></div>
 
-                            <textarea name="content" cols="66" rows="7"  style="margin:18px"></textarea>
-                        <p style="font-size: 15px; margin: 3%">Name:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" style="width: 100px; border-radius: 20%">
+                            <textarea name="content" cols="66" rows="7"  style="margin:18px" value = '<%=itemDesc%>'></textarea>
+                        <p style="font-size: 15px; margin: 3%">Name:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" style="width: 100px; border-radius: 20%" value = '<%=itemName%>'>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit"  value="삭제하기 "></p>
 
 
