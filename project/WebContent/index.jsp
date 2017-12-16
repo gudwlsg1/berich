@@ -100,6 +100,8 @@
                 <% if(list != null) {
                 	for(int i=0; i < list.size(); i++){
                 		DataBean b = list.get(i);
+                		String itemName = b.getItemName();
+                		String imageUrl = b.getImageUrl();
                 %>
                     <div style="width: 500px; height: 580px;background-color: darkgray; margin: 6%;">
                         <div style="padding: 3px;"></div>
@@ -134,12 +136,12 @@
                             var content = '<div class="wrap">' +
                                 '    <div class="info">' +
                                 '        <div class="title">' +
-                                '            카카오 스페이스닷원' +
+                                '<%=itemName%>' +
                                 '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' +
                                 '        </div>' +
                                 '        <div class="body">' +
                                 '            <div class="img">' +
-                                '                <img src="http://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
+                                '                <img src="<%=imageUrl%>" width="73" height="70">' +
                                 '           </div>' +
                                 '            <div class="desc">' +
                                 '                <div class="ellipsis">제주특별자치도 제주시 첨단로 242</div>' +
