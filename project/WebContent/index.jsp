@@ -141,7 +141,7 @@
 		ArrayList<DataBean> list = DBBean.getInstance().select(-1);
 		if (list != null) {
 	%>
-	<table class="table">
+	<table class="table table-striped"  >
 		<thead>
 			<tr>
 				<th scope="col">ItemID</th>
