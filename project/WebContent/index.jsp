@@ -7,7 +7,10 @@
 <html lang="ko">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <title></title>
     <style type="text/css">
         .wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
@@ -56,38 +59,53 @@
 
             <div id="info" style="background-color: gray; width: 700px; margin: 30px;">                        <!--왼쪽 아래 화면 폼-->
                 <table>
-                    <tr >
+                    <tr>
+                        <h2 style="padding: 20px;  ">Make treasure</h2>
                         <td style="width: 375px; padding: 10px">
-                            <form action=".php"name="form">
-                                <p style="font-size: 25px; margin: 0px; padding: 8px">Name:&nbsp;
-                                    <input type="text" name="name" value="Name" style="height: 25px;border-radius: 30px;"></p>
 
-                                <p style="font-size: 25px; margin: 0px; padding: 8px">Url:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <input type="file" name="url" value="file" style="height: 25px;">
-                                    <input type="file" name="url" value="file" style="height: 25px;"></p>
+                                <form class="form-inline" style="padding:10px;">
+                                    <div class="form-group">
+                                        <label for="name">Name:</label>
+                                        <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
+                                    </div>
+                                    <form method="POST" action="#" enctype="multipart/form-data">
+                                        <div class="form-group">
+                                            <div class="input-group input-file" name="Fichier1">
+                                                <input type="text" class="form-control" placeholder='Choose a file...' />
+                                                <span class="input-group-btn">
+        		<button class="btn btn-default btn-choose" type="button">Choose</button>
+    		</span>
 
-                                <p style="border-radius: 30px; font-size: 25px; margin: 5px; padding: 8px">Cnt:&nbsp;&nbsp;
-                                    <select style="width: 80px; height: 20px; ">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
-                                    </select>
-                                </p>
+
+                                            </div>
+                                        </div>
+                                    </form>
+                                        <div class="form-group">
+                                            <label for="count">Count:</label>
+                                            <select class="form-control" id="count">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                            <option>6</option>
+                                            <option>7</option>
+                                            <option>8</option>
+                                            <option>9</option>
+                                            <option>10</option>
+                                            </select>
+                                        </div>
+                                    <br>
+                                    <button type="submit" class="btn btn-default" style="margin: 10px">Submit</button>
+                                </form>
+
                                 <input id="lat" name="lat" type="hidden" style="border-radius: 30px;"><br>
                                 <input id="lng" name="lng" type="hidden"  style="border-radius: 30px;">
-                            </form>
+
                         </td>
-                        <td valign="top" style="width: 375px;">
-                            <p style="font-size: 25px;">Desc:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <textarea name="content" cols="40" rows="8" ></textarea></p>
-                            <input type="submit" value="확인" style="border-radius: 30px; width: 274px; padding: 8px">
+                        <td valign="top" style="width: 300px; padding: 8px">
+                            <label>Info:</label>
+                                <textarea rows="6" cols="8" class="form-control"></textarea>
                         </td>
                     </tr>
                 </table>
@@ -97,7 +115,7 @@
         <td valign="top">                                                                                                   <!--오른쪽 화면 리스트-->
             <div  id="box" style="width: 700px; height: 745px; background-color: gray; margin-right: 30px">
                 <div style="overflow-y:scroll; height: 100%; margin: 20px;">
-                <% if(list != null) {
+				 <% if(list != null) {
                 	for(int i=0; i < list.size(); i++){
                 		DataBean b = list.get(i);
                 		String itemName = b.getItemName();
@@ -108,7 +126,7 @@
                         <div style="padding: 3px;"></div>
                             <div id="map2" style="width: 400px;height: 300px ; margin:7%"></div>
 
-                            <textarea name="content" cols="66" rows="7"  style="margin:18px" value = '<%=itemDesc%>'></textarea>
+                        <textarea class="form-control" rows="10" cols="10" value = '<%=itemDesc%>' readonly></textarea>
                         <p style="font-size: 15px; margin: 3%">Name:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" style="width: 100px; border-radius: 20%" value = '<%=itemName%>'>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit"  value="삭제하기 "></p>
 
@@ -137,18 +155,13 @@
                             var content = '<div class="wrap">' +
                                 '    <div class="info">' +
                                 '        <div class="title">' +
-                                '<%=itemName%>' +
+                                '	<%=itemName%>' +
                                 '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' +
                                 '        </div>' +
                                 '        <div class="body">' +
                                 '            <div class="img">' +
                                 '                <img src="<%=imageUrl%>" width="73" height="70">' +
-                                '           </div>' +
-                                '            <div class="desc">' +
-                                '                <div class="ellipsis">제주특별자치도 제주시 첨단로 242</div>' +
-                                '                <div class="jibun ellipsis">(우) 63309 (지번) 영평동 2181</div>' +
-                                '                <div><a href="http://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a></div>' +
-                                '            </div>' +
+                                '           </div>'+
                                 '        </div>' +
                                 '    </div>' +
                                 '</div>';
@@ -212,8 +225,6 @@
         var resultDiv = document.getElementById('clickLatlng');
         resultDiv.innerHTML = message;
     });
-
-    <a class="btn btn-primary" >
 </script>
 </body>
 </html>
