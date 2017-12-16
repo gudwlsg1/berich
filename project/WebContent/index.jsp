@@ -99,6 +99,18 @@
                                             </div>
                                             <input class="form-control file" type="file" id="fileinput" name="imageUrl" required aria-label="Hidden input for file selection">
                                         </div>
+                                        <div class="input-group">
+                                            <div class="input-group">
+                                                <label>Shadow Image File:</label>
+                                            </div>
+                                            <div class="input-group">
+                                                <input type="text" id="filename2" class="form-control" readonly required aria-label="Selected file name">
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-secondary" type="button" id="browsebutton2">Browse</button>
+                                                </span>
+                                            </div>
+                                            <input class="form-control file" type="file" id="fileinput2" name="shadowUrl" required aria-label="Hidden input for file selection">
+                                        </div>
                                     </form>
                                     <button type="submit" class="btn btn-default" style="margin: 10px">Submit</button>
                                 </form>
