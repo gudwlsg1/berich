@@ -137,12 +137,13 @@
                 		String itemName = b.getItemName();
                 		String imageUrl = b.getImageUrl();
                 		String itemDesc = b.getItemDesc();
+                		out.println(itemDesc);
                 %>
                     <div style="width: 500px; height: 580px;background-color: darkgray; margin: 6%;">
                         <div style="padding: 3px;"></div>
                             <div id="map2" style="width: 400px;height: 300px ; margin:7%"></div>
 
-                        <textarea class="form-control" rows="5" cols="5" value = '<%=itemDesc%>' readonly></textarea>
+                        <textarea class="form-control" rows="5" cols="5" value = "<%=itemDesc%>" readonly></textarea>
                         <div class="form-group">
                         <label for="name">Name:</label>
                         <input type="text" class="form-control" id="name" placeholder="Enter name" name="name" style="width: 180px" value = '<%=itemName%>'>
@@ -178,7 +179,7 @@
                                 '        </div>' +
                                 '        <div class="body">' +
                                 '            <div class="img">' +
-                                '                <img src="<%=imageUrl%>" width="73" height="70">' +
+                                '                <img src= "<%=imageUrl%>" width="73" height="70">' +
                                 '           </div>'+
                                 '        </div>' +
                                 '    </div>' +
@@ -202,15 +203,15 @@
                                 overlay.setMap(null);
                             }
                         </script>
-                    </div>
-                    </div>
-                </div>
-				<%	} // for
+                    	</div>
+                    	<%	} // for
                 } //if
                 %>
-            </div>
-        </td>
-    </tr>
+                    	</div>
+                	</div>
+            	</div>
+        	</td>
+    	</tr>
     </tbody>
 </table>
 
