@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="./upload.js"></script>
     <title></title>
     <style type="text/css">
         .wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
@@ -27,6 +29,7 @@
         .info .img {position: absolute;top: 6px;left: 5px;width: 73px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;}
         .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
         .info .link {color: #5085BB;}
+        .file {visibility: hidden;}
     </style>
 </head>
 
@@ -61,41 +64,42 @@
                 <table>
                     <tr>
                         <h2 style="padding: 20px;  ">Make treasure</h2>
-                        <td style="width: 375px; padding: 10px">
+                        <td style="width: 375px; padding: 10px;">
 
                                 <form class="form-inline" style="padding:10px;">
                                     <div class="form-group">
                                         <label for="name">Name:</label>
                                         <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
                                     </div>
+                                    <div class="form-group" style="margin: 20px 0px">
+                                        <label for="count">Count:</label>
+                                        <select class="form-control" id="count">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                        <option>6</option>
+                                        <option>7</option>
+                                        <option>8</option>
+                                        <option>9</option>
+                                        <option>10</option>
+                                        </select>
+                                    </div>
                                     <form method="POST" action="#" enctype="multipart/form-data">
-                                        <div class="form-group">
-                                            <div class="input-group input-file" name="Fichier1">
-                                                <input type="text" class="form-control" placeholder='Choose a file...' />
-                                                <span class="input-group-btn">
-        		<button class="btn btn-default btn-choose" type="button">Choose</button>
-    		</span>
-
-
+                                        <div class="input-group">
+                                            <div class="input-group">
+                                                <label>Image File:</label>
                                             </div>
+                                            <div class="input-group">
+                                                <input type="text" id="filename" class="form-control" readonly required aria-label="Selected file name">
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-secondary" type="button" id="browsebutton">Browse</button>
+                                                </span>
+                                            </div>
+                                            <input class="form-control file" type="file" id="fileinput" name="imageUrl" required aria-label="Hidden input for file selection">
                                         </div>
                                     </form>
-                                        <div class="form-group">
-                                            <label for="count">Count:</label>
-                                            <select class="form-control" id="count">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                            <option>6</option>
-                                            <option>7</option>
-                                            <option>8</option>
-                                            <option>9</option>
-                                            <option>10</option>
-                                            </select>
-                                        </div>
-                                    <br>
                                     <button type="submit" class="btn btn-default" style="margin: 10px">Submit</button>
                                 </form>
 
@@ -115,7 +119,7 @@
         <td valign="top">                                                                                                   <!--오른쪽 화면 리스트-->
             <div  id="box" style="width: 700px; height: 745px; background-color: gray; margin-right: 30px">
                 <div style="overflow-y:scroll; height: 100%; margin: 20px;">
-				 <% if(list != null) {
+				<% if(list != null) {
                 	for(int i=0; i < list.size(); i++){
                 		DataBean b = list.get(i);
                 		String itemName = b.getItemName();
@@ -126,9 +130,11 @@
                         <div style="padding: 3px;"></div>
                             <div id="map2" style="width: 400px;height: 300px ; margin:7%"></div>
 
-                        <textarea class="form-control" rows="10" cols="10" value = '<%=itemDesc%>' readonly></textarea>
-                        <p style="font-size: 15px; margin: 3%">Name:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" style="width: 100px; border-radius: 20%" value = '<%=itemName%>'>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit"  value="삭제하기 "></p>
+                        <textarea class="form-control" rows="5" cols="5" value = '<%=itemDesc%>' readonly></textarea>
+                        <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter name" name="name" style="width: 180px" value = '<%=itemName%>'>
+                    </div>
 
 
 
