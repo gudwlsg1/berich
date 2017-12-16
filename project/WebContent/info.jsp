@@ -18,6 +18,13 @@
 		out.println(itemId);
 		ArrayList<DataBean> list = DBBean.getInstance().select(Integer.parseInt(itemId));
 		item = list.get(0);
+		String imageUrl = item.getImageUrl();
+		String itemName = item.getItemName();
+		int itemCnt = item.getItemCnt();
+		String itemDesc = item.getItemDesc();
+		Double lat = item.getLat();
+		Double lng = item.getLng();
+		
 	}
 %>
 <%=item.getItemName() %>
