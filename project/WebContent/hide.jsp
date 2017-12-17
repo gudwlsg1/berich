@@ -53,6 +53,23 @@
                         level: 3
                     };
                     var map = new daum.maps.Map(container, options);
+                    var isEmpty = function(value)
+                    { 
+                    	if( value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length ) )
+                    	{ 
+                    		return true;
+                    	}else{ 
+                    		return false;
+                    	}
+                    };
+                    function checkNull(){
+                    	var form = document.form;
+                    	if(isEmpty(form.lat.value) || isEmpty(form.lng.value)){
+                    		alert("숨길 위치를 클릭해주세요.");
+                    		return false;
+                    	}
+                    		return true;
+                    }
                 </script>
 
 
@@ -60,7 +77,7 @@
 
 
                 <div id="info" style="background-color: #C0AB8C; border-color: white; border: solid 10px; width: 700px; height: 650px; position: absolute; top: 30px; \right: 10px; margin-right:50px;">                        <!--왼쪽 아래 화면 폼-->
-                    <form action="Insert"name="form" method='post' enctype="multipart/form-data" class="form-inline" style="padding:10px;">
+                    <form onSubmit="return checkNull();" action="Insert" id="form" name="form" method='post' enctype="multipart/form-data" class="form-inline" style="padding:10px;">
                         <table>
                             <tr>
                                 <h2 style="padding: 0px 25px; font-weight: bold; font-size: 50px">Make treasure</h2>
@@ -118,7 +135,7 @@
 
                             </tr>
                         </table>
-                        <button type="button" class="btn btn-lg btn-block" style="padding: 10px; top: 100px; font-size: 20px;">Submit</button>
+                        <button class="btn btn-lg btn-block" style="padding: 10px; top: 100px; font-size: 20px;">Submit</button>
                         <button class="btn  btn-lg btn-block" type="button" id="back" style="padding: 10px; font-size: 20px; ">Back</button>
                     </form>
                 </div>
