@@ -10,6 +10,12 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./upload.js"></script>
+        <script>
+	function back()
+	{
+		 window.history.back();
+	}
+    </script>
     <title></title>
     <style type="text/css">
         .wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
@@ -28,22 +34,9 @@
         .info .link {color: #5085BB;}
         .file {visibility: hidden;}
     </style>
-    <script>
-        // When the user clicks on <div>, open the popup
-        function openPopup() {
-            var popup = document.getElementById("detailPopup");
-            popup.classList.toggle("show");
-        }
-    </script>
 </head>
 
 <body style="background-color: #C0AB8C">
-
-function back()
-	{
-		history.go(-1);
-	}
-
 <table>
     <tbody>
     <tr>
@@ -76,10 +69,6 @@ function back()
                     return true;
                 }
             </script>
-
-
-
-
 
             <div id="info" style="background-color: #C0AB8C; border-color: white; border: solid 10px; width: 700px; height: 650px; position: absolute; top: 30px; \right: 10px; margin-right:50px;">                        <!--왼쪽 아래 화면 폼-->
                 <form onSubmit="return checkNull();" action="Insert" id="form" name="form" method='post' enctype="multipart/form-data" class="form-inline" style="padding:10px;">
@@ -141,7 +130,7 @@ function back()
                         </tr>
                     </table>
                     <button class="btn btn-lg btn-block" style="padding: 10px; top: 100px; font-size: 20px;">Submit</button>
-                    <button class="btn  btn-lg btn-block" type="button" id="back" style="padding: 10px; font-size: 20px;" onclick = "back()">Back</button>
+                    <button class="btn  btn-lg btn-block"  id="back" style="padding: 10px; font-size: 20px;" onclick = "back()">Back</button>
                 </form>
             </div>
         </td>

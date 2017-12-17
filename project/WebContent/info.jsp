@@ -14,6 +14,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./upload.js"></script>
     <title></title>
+    <script>
+	function back()
+	{
+		 window.history.back();
+	}
+    </script>
     <style type="text/css">
         .wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
         .wrap * {padding: 0;margin: 0;}
@@ -34,25 +40,18 @@
 </head>
 
 <body style="background-color: #C0AB8C">
-
-	function back()
-	{
-		history.go(-1);
-	}
 	
 	<%
 	DataBean item = null;
 	String itemId = request.getParameter("itemId");
 	if(itemId == null) out.println("Error");
 	else{
-		out.println(itemId);
 		ArrayList<DataBean> list = DBBean.getInstance().select(Integer.parseInt(itemId));
 		item = list.get(0);
 		String imageUrl = item.getImageUrl();
 		String itemName = item.getItemName();
 		int itemCnt = item.getItemCnt();
 		String itemDesc = item.getItemDesc();
-		out.println(itemDesc);
 		Double lat = item.getLat();
 		Double lng = item.getLng();
 	%>
@@ -88,7 +87,7 @@
                             </tr>
                         </table>
                         <button class="btn btn-lg btn-block" style="padding: 10px; top: 100px; font-size: 20px;">Delete</button>
-                        <button class="btn  btn-lg btn-block" type="button" id="back" style="padding: 10px; font-size: 20px; "onclick =  "back()">Back</button>
+                        <button class="btn  btn-lg btn-block" id="back" style="padding: 10px; font-size: 20px; " onclick="back()">Back</button>
                     </form>
                 </div>
             </td>
