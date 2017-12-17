@@ -10,12 +10,6 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./upload.js"></script>
-        <script>
-	function back()
-	{
-		 window.history.back();
-	}
-    </script>
     <title></title>
     <style type="text/css">
         .wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
@@ -130,7 +124,6 @@
                         </tr>
                     </table>
                     <button class="btn btn-lg btn-block" style="padding: 10px; top: 100px; font-size: 20px;">Submit</button>
-                    <button class="btn  btn-lg btn-block"  id="back" style="padding: 10px; font-size: 20px;" onclick = "back()">Back</button>
                 </form>
             </div>
         </td>
