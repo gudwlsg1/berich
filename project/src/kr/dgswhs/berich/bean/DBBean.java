@@ -118,6 +118,7 @@ public class DBBean {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		int result = 0;
 
 		try {
 			conn = getConnection();
@@ -129,7 +130,7 @@ public class DBBean {
 
 			rs.next();
 
-			int num = rs.getInt("itemCnt");
+			int  num = rs.getInt("itemCnt");
 
 			if (num > 0) {
 				pstmt = conn.prepareStatement(sql1);
@@ -137,7 +138,9 @@ public class DBBean {
 				pstmt.setInt(1, --num);
 				pstmt.setInt(2, id);
 
-				rs = pstmt.executeQuery();
+				result = pstmt.executeUpdate();
+				return result;
+				
 			}else {
 				return 0;
 			}
@@ -163,12 +166,13 @@ public class DBBean {
 		return 1;
 	}
 
-	public void delete(int id) throws Exception {
+	public int delete(int id) {
 
 		String sql = "delete from treasure where itemId = ?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		int result = 0;
 
 		try {
 
@@ -177,7 +181,7 @@ public class DBBean {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, id);
 
-			rs = pstmt.executeQuery();
+			result = pstmt.executeUpdate();
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -198,6 +202,7 @@ public class DBBean {
 				} catch (SQLException ex) {
 				}
 		}
+		return result;
 
 	}
 }
