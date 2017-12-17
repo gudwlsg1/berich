@@ -107,7 +107,7 @@
 <script>
     var mapContainer = document.getElementById('map'), // 지도의 중심좌표
         mapOption = {
-            center: new daum.maps.LatLng(33.451475, 126.570528), // 지도의 중심좌표
+            center: new daum.maps.LatLng(<%=lat%>, <%=lng%>), // 지도의 중심좌표
             level: 3 // 지도의 확대 레벨
         };
 
