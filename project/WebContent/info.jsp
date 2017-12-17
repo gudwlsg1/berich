@@ -31,13 +31,6 @@
         .info .link {color: #5085BB;}
         .file {visibility: hidden;}
     </style>
-    <script>
-        // When the user clicks on <div>, open the popup
-        function openPopup() {
-            var popup = document.getElementById("detailPopup");
-            popup.classList.toggle("show");
-        }
-    </script>
 </head>
 
 <body style="background-color: #C0AB8C">
@@ -53,10 +46,9 @@
 		String itemName = item.getItemName();
 		int itemCnt = item.getItemCnt();
 		String itemDesc = item.getItemDesc();
+		out.println(itemDesc);
 		Double lat = item.getLat();
 		Double lng = item.getLng();
-		
-	}
 	%>
     <table>
         <tbody>
@@ -66,13 +58,14 @@
                 <script type="text/javascript"
                         src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c59727be163045e7f3830a65c8a89d9e"></script>
                 <div id="info" style="background-color: #C0AB8C; border-color: white; border: solid 10px; width: 700px; height: 650px; position: absolute; top: 30px; \right: 10px; margin-right:50px;">                        <!--왼쪽 아래 화면 폼-->
-                    <form action="Insert"name="form" method='post' enctype="multipart/form-data" class="form-inline" style="padding:10px;">
+                    <form action="Delete"name="form" method='get' enctype="multipart/form-data" class="form-inline" style="padding:10px;">
                         <table>
                             <tr>
                                 <h2 style="padding: 0px 25px; font-weight: bold; font-size: 50px">Make treasure</h2>
                                 <td style="width: 375px; padding: 40px;">
+                                	<input type="hidden" name="itemId" value="<%=itemId %>"/>
                                     <div class="form-group">
-                                        <label for="name" style="font-size: 20px">Name:</label>
+                                        <label for="name" style="font-size: 20px">Name: </label>
                                         <input type="text" class="form-control" id="name" placeholder="Enter name" name="itemName" value = '<%=itemName%>' readonly>
                                     </div>
                                     <div class="form-group" style="margin: 20px 0px">
@@ -83,12 +76,12 @@
                                 </td>
                                 <td style="width: 300px; padding: 8px">
                                     <label style="font-size: 20px">Info:</label>
-                                    <textarea rows="6" cols="30" class="form-control" name="itemDesc" value = '<%=itemDesc%>' readonly></textarea>
+                                    <textarea rows="6" cols="30" class="form-control" name="itemDesc" readonly><%=itemDesc%></textarea>
                                 </td>
 
                             </tr>
                         </table>
-                        <button type="button" class="btn btn-lg btn-block" style="padding: 10px; top: 100px; font-size: 20px;">Delete</button>
+                        <button class="btn btn-lg btn-block" style="padding: 10px; top: 100px; font-size: 20px;">Delete</button>
                         <button class="btn  btn-lg btn-block" type="button" id="back" style="padding: 10px; font-size: 20px; ">Back</button>
                     </form>
                 </div>
@@ -96,8 +89,6 @@
         </tr>
         </tbody>
     </table>
-    <span class="popuptext" id="detailPopup">
-</span>
 
     <div id="map" style="height:50px;"></div>
     <div id="clickLatlng"></div>
@@ -128,5 +119,8 @@
             resultDiv.innerHTML = message;
         });
     </script>
+    <%
+}
+%>
 </body>
 </html>
