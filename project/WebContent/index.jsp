@@ -13,6 +13,7 @@
 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 <script
 	src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script
@@ -33,7 +34,6 @@
 	font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;
 	line-height: 1.5;
 }
-
 .wrap * {
 	padding: 0;
 	margin: 0;
@@ -135,7 +135,7 @@
 </head>
 
 <body>
-	<a href="hide.jsp"> 보물 추가하기</a>
+	<a href="hide.jsp" class = "waves-effect waves-light btn"> 보물 추가하기</a>
 	<br>
 	<%
 		ArrayList<DataBean> list = DBBean.getInstance().select(-1);
