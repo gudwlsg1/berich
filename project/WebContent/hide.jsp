@@ -39,6 +39,11 @@
 
 <body style="background-color: #C0AB8C">
 
+function back()
+	{
+		history.go(-1);
+	}
+
 <table>
     <tbody>
     <tr>
@@ -136,7 +141,7 @@
                         </tr>
                     </table>
                     <button class="btn btn-lg btn-block" style="padding: 10px; top: 100px; font-size: 20px;">Submit</button>
-                    <button class="btn  btn-lg btn-block" type="button" id="back" style="padding: 10px; font-size: 20px; ">Back</button>
+                    <button class="btn  btn-lg btn-block" type="button" id="back" style="padding: 10px; font-size: 20px;" onclick = "back()">Back</button>
                 </form>
             </div>
         </td>
