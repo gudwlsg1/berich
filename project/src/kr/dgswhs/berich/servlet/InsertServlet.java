@@ -48,7 +48,8 @@ public class InsertServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		request.setCharacterEncoding("UTF-8");
-	    response.setContentType("text/html; charset=UTF-8");
+		response.setCharacterEncoding("UTF-8");
+	    //response.setContentType("text/plain; charset=UTF-8");
 	    PrintWriter out = response.getWriter();
 
 	    String savePath="/upload";
@@ -75,7 +76,8 @@ public class InsertServlet extends HttpServlet {
 		        i++;
 		    }
 		    
-		    String baseUrl = "http://localhost:8080"+context.getContextPath()+"/upload/";
+		    //String baseUrl = "http://10.80.162.89:8080"+context.getContextPath()+"/upload/";
+		    String baseUrl = context.getContextPath()+"/upload/";
 		    String itemName = multi.getParameter("itemName");
 		    String imageUrl = baseUrl+fileName[0];
 		    String shadowUrl = baseUrl + fileName[1];
