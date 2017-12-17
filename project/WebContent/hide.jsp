@@ -39,141 +39,141 @@
 
 <body style="background-color: #C0AB8C">
 
-    <table>
-        <tbody>
-        <tr>
-            <td valign="top">
-                <div id="map" style="width:700px;height:650px; margin: 30px;"></div>                                          <!--지도화면-->
-                <script type="text/javascript"
-                        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c59727be163045e7f3830a65c8a89d9e"></script>
-                <script>
-                    var container = document.getElementById('map');
-                    var options = {
-                        center: new daum.maps.LatLng(33.450701, 126.570667),
-                        level: 3
-                    };
-                    var map = new daum.maps.Map(container, options);
-                    var isEmpty = function(value)
-                    { 
-                    	if( value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length ) )
-                    	{ 
-                    		return true;
-                    	}else{ 
-                    		return false;
-                    	}
-                    };
-                    function checkNull(){
-                    	var form = document.form;
-                    	if(isEmpty(form.lat.value) || isEmpty(form.lng.value)){
-                    		alert("숨길 위치를 클릭해주세요.");
-                    		return false;
-                    	}
-                    		return true;
+<table>
+    <tbody>
+    <tr>
+        <td valign="top">
+            <div id="map" style="width:700px;height:650px; margin: 30px;"></div>                                          <!--지도화면-->
+            <script type="text/javascript"
+                    src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c59727be163045e7f3830a65c8a89d9e"></script>
+            <script>
+                var container = document.getElementById('map');
+                var options = {
+                    center: new daum.maps.LatLng(33.450701, 126.570667),
+                    level: 3
+                };
+                var map = new daum.maps.Map(container, options);
+                var isEmpty = function(value)
+                {
+                    if( value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length ) )
+                    {
+                        return true;
+                    }else{
+                        return false;
                     }
-                </script>
+                };
+                function checkNull(){
+                    var form = document.form;
+                    if(isEmpty(form.lat.value) || isEmpty(form.lng.value)){
+                        alert("숨길 위치를 클릭해주세요.");
+                        return false;
+                    }
+                    return true;
+                }
+            </script>
 
 
 
 
 
-                <div id="info" style="background-color: #C0AB8C; border-color: white; border: solid 10px; width: 700px; height: 650px; position: absolute; top: 30px; \right: 10px; margin-right:50px;">                        <!--왼쪽 아래 화면 폼-->
-                    <form onSubmit="return checkNull();" action="Insert" id="form" name="form" method='post' enctype="multipart/form-data" class="form-inline" style="padding:10px;">
-                        <table>
-                            <tr>
-                                <h2 style="padding: 0px 25px; font-weight: bold; font-size: 50px">Make treasure</h2>
-                                <td style="width: 375px; padding: 40px;">
-                                    <div class="form-group">
-                                        <label for="name" style="font-size: 20px">Name:</label>
-                                        <input type="text" class="form-control" id="name" placeholder="Enter name" name="itemName">
-                                    </div>
-                                    <div class="form-group" style="margin: 20px 0px">
-                                        <label for="count"style="font-size: 20px">Count:</label>
-                                        <select class="form-control" id="count" name="itemCnt">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                            <option>6</option>
-                                            <option>7</option>
-                                            <option>8</option>
-                                            <option>9</option>
-                                            <option>10</option>
-                                        </select>
-                                    </div>
-                                    <!--  file upload  -->
+            <div id="info" style="background-color: #C0AB8C; border-color: white; border: solid 10px; width: 700px; height: 650px; position: absolute; top: 30px; \right: 10px; margin-right:50px;">                        <!--왼쪽 아래 화면 폼-->
+                <form onSubmit="return checkNull();" action="Insert" id="form" name="form" method='post' enctype="multipart/form-data" class="form-inline" style="padding:10px;">
+                    <table>
+                        <tr>
+                            <h2 style="padding: 0px 25px; font-weight: bold; font-size: 50px">Make treasure</h2>
+                            <td style="width: 375px; padding: 40px;">
+                                <div class="form-group">
+                                    <label for="name" style="font-size: 20px">Name:</label>
+                                    <input type="text" class="form-control" id="name" placeholder="Enter name" name="itemName">
+                                </div>
+                                <div class="form-group" style="margin: 20px 0px">
+                                    <label for="count"style="font-size: 20px">Count:</label>
+                                    <select class="form-control" id="count" name="itemCnt">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                        <option>6</option>
+                                        <option>7</option>
+                                        <option>8</option>
+                                        <option>9</option>
+                                        <option>10</option>
+                                    </select>
+                                </div>
+                                <!--  file upload  -->
+                                <div class="input-group">
+                                    <label style="font-size: 20px">Image File:</label>
+                                    <br>
                                     <div class="input-group">
-                                            <label style="font-size: 20px">Image File:</label>
-                                        <br>
-                                        <div class="input-group">
-                                            <input type="text" id="filename" class="form-control" readonly required aria-label="Selected file name">
-                                            <span class="input-group-btn">
+                                        <input type="text" id="filename" class="form-control" readonly required aria-label="Selected file name">
+                                        <span class="input-group-btn">
                                                 <button class="btn btn-secondary" type="button" id="browsebutton">Browse</button>
                                             </span>
-                                        </div>
-                                        <input class="form-control file" type="file" id="fileinput" name="imageUrl" required aria-label="Hidden input for file selection">
                                     </div>
+                                    <input class="form-control file" type="file" id="fileinput" name="imageUrl" required aria-label="Hidden input for file selection">
+                                </div>
+                                <div class="input-group">
+                                    <label style="font-size: 20px">Shadow Image File:</label>
                                     <div class="input-group">
-                                            <label style="font-size: 20px">Shadow Image File:</label>
-                                        <div class="input-group">
-                                            <input type="text" id="filename2" class="form-control" readonly required aria-label="Selected file name">
-                                            <span class="input-group-btn">
+                                        <input type="text" id="filename2" class="form-control" readonly required aria-label="Selected file name">
+                                        <span class="input-group-btn">
                                                 <button class="btn btn-secondary" type="button" id="browsebutton2">Browse</button>
 
-                                        </div>
-                                        <input class="form-control file" type="file" id="fileinput2" name="shadowUrl" required aria-label="Hidden input for file selection">
                                     </div>
-                                    <!--  hidden, lat and lng -->
-                                    <input id="lat" name="lat" type="hidden" style="border-radius: 30px;"><br>
-                                    <input id="lng" name="lng" type="hidden"  style="border-radius: 30px;">
+                                    <input class="form-control file" type="file" id="fileinput2" name="shadowUrl" required aria-label="Hidden input for file selection">
+                                </div>
+                                <!--  hidden, lat and lng -->
+                                <input id="lat" name="lat" type="hidden" style="border-radius: 30px;"><br>
+                                <input id="lng" name="lng" type="hidden"  style="border-radius: 30px;">
 
-                                </td>
-                                <td style="width: 300px; padding: 8px">
-                                    <label style="font-size: 20px">Info:</label>
-                                    <textarea rows="6" cols="30" class="form-control" name="itemDesc"></textarea>
-                                </td>
+                            </td>
+                            <td style="width: 300px; padding: 8px">
+                                <label style="font-size: 20px">Info:</label>
+                                <textarea rows="6" cols="30" class="form-control" name="itemDesc"></textarea>
+                            </td>
 
-                            </tr>
-                        </table>
-                        <button class="btn btn-lg btn-block" style="padding: 10px; top: 100px; font-size: 20px;">Submit</button>
-                        <button class="btn  btn-lg btn-block" type="button" id="back" style="padding: 10px; font-size: 20px; ">Back</button>
-                    </form>
-                </div>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-    <span class="popuptext" id="detailPopup">
+                        </tr>
+                    </table>
+                    <button class="btn btn-lg btn-block" style="padding: 10px; top: 100px; font-size: 20px;">Submit</button>
+                    <button class="btn  btn-lg btn-block" type="button" id="back" style="padding: 10px; font-size: 20px; ">Back</button>
+                </form>
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<span class="popuptext" id="detailPopup">
 </span>
 
-    <div id="map" style="height:50px;"></div>
-    <div id="clickLatlng"></div>
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c59727be163045e7f3830a65c8a89d9e"></script>
-    <script>
-        var mapContainer = document.getElementById('map'), // 지도를 표시할 div
-            mapOption = {
-                center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-                level: 3 // 지도의 확대 레벨
-            };
-        var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-        // 지도를 클릭한 위치에 표출할 마커입니다
-        var marker = new daum.maps.Marker({
-            position: map.getCenter()
-        });
-        marker.setMap(map);
-        // 지도에 클릭 이벤트를 등록합니다
-        daum.maps.event.addListener(map, 'click', function(mouseEvent) {
+<div id="map" style="height:50px;"></div>
+<div id="clickLatlng"></div>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c59727be163045e7f3830a65c8a89d9e"></script>
+<script>
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+        mapOption = {
+            center: new daum.maps.LatLng(35.884113454261374,128.5940802134788 ), // 지도의 중심좌표
+            level: 3 // 지도의 확대 레벨
+        };
+    var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+    // 지도를 클릭한 위치에 표출할 마커입니다
+    var marker = new daum.maps.Marker({
+        position: map.getCenter()
+    });
+    marker.setMap(map);
+    // 지도에 클릭 이벤트를 등록합니다
+    daum.maps.event.addListener(map, 'click', function(mouseEvent) {
 // 클릭한 위도, 경도 정보를 가져옵니다
-            var latlng = mouseEvent.latLng;
+        var latlng = mouseEvent.latLng;
 // 마커 위치를 클릭한 위치로 옮깁니다
-            marker.setPosition(latlng);
-            document.getElementById('lat').value=latlng.getLat();
-            document.getElementById('lng').value=latlng.getLng();
-            var message = '클릭한 위치의 위도는 ' + latlng.getLat() + ' 이고, ';
-            message += '경도는 ' + latlng.getLng() + ' 입니다';
-            var resultDiv = document.getElementById('clickLatlng');
-            resultDiv.innerHTML = message;
-        });
-    </script>
+        marker.setPosition(latlng);
+        document.getElementById('lat').value=latlng.getLat();
+        document.getElementById('lng').value=latlng.getLng();
+        var message = '클릭한 위치의 위도는 ' + latlng.getLat() + ' 이고, ';
+        message += '경도는 ' + latlng.getLng() + ' 입니다';
+        var resultDiv = document.getElementById('clickLatlng');
+        resultDiv.innerHTML = message;
+    });
+</script>
 </body>
 </html>
