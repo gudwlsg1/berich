@@ -50,7 +50,8 @@ public class selectMobile_do extends HttpServlet {
 
 	protected void select(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.setCharacterEncoding("euc-kr");
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("text/json; charset=UTF-8");
 		DBBean dbbean = DBBean.getInstance();
 		ArrayList<DataBean> data = dbbean.select(-1);
 
